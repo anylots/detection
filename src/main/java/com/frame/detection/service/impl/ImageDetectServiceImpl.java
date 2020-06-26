@@ -1,7 +1,4 @@
-/**
- * Alipay.com Inc.
- * Copyright (c) 2004-2020 All Rights Reserved.
- */
+
 package com.frame.detection.service.impl;
 
 import com.frame.detection.common.BufferedImageService;
