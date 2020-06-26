@@ -53,13 +53,26 @@ public class BufferedImageServiceImpl implements BufferedImageService {
     }
 
     /**
+     * create detected frame
+     *
+     * @param bImage
+     * @return
+     */
+    @Override
+    public byte[] createDetectedFrame(BufferedImage bImage) {
+        //process detect frame
+        //TODO
+        return imageToBytes(bImage);
+    }
+
+
+    /**
      * image to bytes
      *
      * @param bImage
      * @return byte[]
      */
-    @Override
-    public byte[] imageToBytes(BufferedImage bImage) {
+    private byte[] imageToBytes(BufferedImage bImage) {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         try {
             ImageIO.write(bImage, "png", out);

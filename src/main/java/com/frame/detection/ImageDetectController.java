@@ -1,12 +1,11 @@
 
-package com.frame.detection.controller;
+package com.frame.detection;
 
 import com.frame.detection.service.ImageDetectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -16,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @version $Id: ImageDetectController.java, v 0.1 2020年06月26日 18:56 anylots Exp $
  */
 @Controller
-@ResponseBody
+@RequestMapping("service")
 public class ImageDetectController {
 
     /**
@@ -25,16 +24,6 @@ public class ImageDetectController {
     @Autowired
     private ImageDetectService imageDetectService;
 
-    /**
-     * detect
-     *
-     * @param imageUrl
-     * @return
-     */
-    @RequestMapping(value = "/detect", method = RequestMethod.POST)
-    public ModelAndView detect(String imageUrl) {
-        return new ModelAndView("detect");
-    }
 
     /**
      * detect out
@@ -42,17 +31,19 @@ public class ImageDetectController {
      * @param imageUrl
      * @return
      */
-    @RequestMapping(value = "/detect", method = RequestMethod.POST)
+    @RequestMapping(value = "/detectImage", method = RequestMethod.GET)
     public ModelAndView detectOut(String imageUrl) {
 
         // step 1. detect image by imageUrl
-        byte[] detectFrame = imageDetectService.detect(imageUrl);
+        String detectFrame = imageDetectService.detect(imageUrl);
 
         // step 2. assemble modelAndView
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("detectImage", detectFrame);
+        modelAndView.setViewName("detectOut");
+        modelAndView.addObject("img", detectFrame);
 
         // step 3. return detect result page
         return modelAndView;
     }
+
 }

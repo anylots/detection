@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Show Image</title>
+</head>
+<body>
+
+<img th:src="@{'data:img/png;base64,'+${img}}" />
+
+
+
+</body>
+</html>

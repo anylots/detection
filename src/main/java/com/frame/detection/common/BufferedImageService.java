@@ -18,10 +18,11 @@ public interface BufferedImageService {
 
 
     /**
-     * image to bytes
+     * create detected frame
      *
      * @param bImage
      * @return
      */
-    byte[] imageToBytes(BufferedImage bImage);
+    byte[] createDetectedFrame(BufferedImage bImage);
+
 }

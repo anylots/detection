@@ -14,5 +14,5 @@ public interface ImageDetectService {
      *
      * @param imageUrl
      */
-    byte[] detect(String imageUrl);
+    String detect(String imageUrl);
 }
