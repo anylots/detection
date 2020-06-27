@@ -8,6 +8,10 @@ DetectionApplication.class, access this address through a browser: /detectImage,
 then paste the image URL into the input box,and Submit.
 
 ##Example
+![image](https://github.com/anylots/detection/blob/master/image/20200627160723247.png)
+
+![image](https://github.com/anylots/detection/blob/master/image/OIP.jpg)
+
 
                                                                          
 
