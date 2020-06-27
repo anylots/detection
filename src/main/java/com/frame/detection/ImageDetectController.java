@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
  * @version $Id: ImageDetectController.java, v 0.1 2020年06月26日 18:56 anylots Exp $
  */
 @Controller
-@RequestMapping("service")
 public class ImageDetectController {
 
     /**
@@ -24,18 +23,28 @@ public class ImageDetectController {
     @Autowired
     private ImageDetectService imageDetectService;
 
+    /**
+     * detect out
+     *
+     * @return
+     */
+    @RequestMapping(value = "/detect", method = RequestMethod.GET)
+    public String detect() {
+
+        return "detect";
+    }
 
     /**
      * detect out
      *
-     * @param imageUrl
+     * @param imageLink
      * @return
      */
-    @RequestMapping(value = "/detectImage", method = RequestMethod.GET)
-    public ModelAndView detectOut(String imageUrl) {
+    @RequestMapping(value = "/detectImage", method = RequestMethod.POST)
+    public ModelAndView detectOut(String imageLink) {
 
         // step 1. detect image by imageUrl
-        String detectFrame = imageDetectService.detect(imageUrl);
+        String detectFrame = imageDetectService.detect(imageLink);
 
         // step 2. assemble modelAndView
         ModelAndView modelAndView = new ModelAndView();
