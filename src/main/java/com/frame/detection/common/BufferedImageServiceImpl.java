@@ -12,6 +12,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
+ * implement of BufferedImageService
+ *
  * @author anylots
  * @version $Id: BufferedImageServiceImpl.java, v 0.1 2020年06月26日 18:30 anylots Exp $
  */
@@ -34,10 +36,10 @@ public class BufferedImageServiceImpl implements BufferedImageService {
             bufferedImage = ImageIO.read(is);
         } catch (MalformedURLException e) {
             e.printStackTrace();
-            System.out.println("imageURL: " + imageURL + ",无效!");
+            System.out.println("imageURL: " + imageURL + ",invalid!");
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("imageURL: " + imageURL + ",读取失败!");
+            System.out.println("imageURL: " + imageURL + ",read failed!");
         } finally {
             try {
                 if (is != null) {
@@ -45,7 +47,7 @@ public class BufferedImageServiceImpl implements BufferedImageService {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-                System.out.println("imageURL: " + imageURL + ",流关闭异常!");
+                System.out.println("imageURL: " + imageURL + ",inputStream close error!");
             }
         }
         return bufferedImage;

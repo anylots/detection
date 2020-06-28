@@ -8,15 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
+ * implement of ImageDetectService
+ *
  * @author anylots
  * @version $Id: ImageDetectServiceImpl.java, v 0.1 2020年06月26日 18:24 anylots Exp $
  */
 @Service
 public class ImageDetectServiceImpl implements ImageDetectService {
 
-    @Autowired
-    private BufferedImageService bufferedImageService;
-
+    /**
+     * image detector
+     */
     @Autowired
     private ImageDetector imageDetector;
 
