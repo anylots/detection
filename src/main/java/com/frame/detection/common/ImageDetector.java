@@ -10,10 +10,18 @@ package com.frame.detection.common;
 public interface ImageDetector {
 
     /**
-     * detect
+     * get image info by url
      *
-     * @param imageUrl image url
+     * @param imageLink image link
      * @return
      */
-    String detect(String imageUrl);
+    String getDetectImageByUrl(String imageLink);
+
+    /**
+     * get image info by code
+     *
+     * @param imageBase64Code imageBase64Code
+     * @return
+     */
+    String getDetectImageByCode(String imageBase64Code);
 }

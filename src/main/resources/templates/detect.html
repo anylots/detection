@@ -40,14 +40,15 @@
 
 <div class="container" style="margin-top:20px;">
     <h2>Object Detection Management</h2>
-    <form enctype='multipart/form-data' method='POST' action="detectImage" target="_blank">
+    <form enctype='multipart/form-data' method='POST' action="detectImage" target="_blank" onsubmit="return toVaild()">
 
         <div class="input-group mb-3" style="margin-top:40px;width:500px">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
             </div>
             <div class="custom-file">
-                <input type="file" name="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                <input type="file" name="imageFile" class="custom-file-input" id="inputGroupFile01"
+                       aria-describedby="inputGroupFileAddon01">
                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
             </div>
         </div>
@@ -57,8 +58,9 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Picture link</span>
             </div>
-            <input name="imageLink" type="text" class="form-control" placeholder="" aria-label="Username"
-                   aria-describedby="basic-addon1">
+            <input id="imageLinkId" name="imageLink" type="text" class="form-control" placeholder=""
+                   aria-label="Username"
+                   aria-describedby="basic-addon1" value="">
         </div>
         <br>
 
@@ -72,3 +74,36 @@
     </form>
 </div>
 </body>
+<script language="javascript">
+            function toVaild(){
+                var val = document.getElementById("imageLinkId").value;
+                if(isEmpty(val)){
+                   alert("Picture link is empty");
+                   return false;
+                }else{
+                 return true;
+                }
+            }
+
+
+function isEmpty(str) {
+    if(typeof str== null || str== "" || str== "undefined") {
+        return true;
+    } else {
+    if (str.match(/^[ ]*$/))
+     {
+             return true;
+      }
+        return false;
+    }
+}
+　　
+
+
+
+
+
+
+
+</script>
+</html>

@@ -1,6 +1,8 @@
 
 package com.frame.detection.service;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  * image detect service
  *
@@ -10,9 +12,16 @@ package com.frame.detection.service;
 public interface ImageDetectService {
 
     /**
-     * detect
+     * detect by url
      *
      * @param imageUrl image url
      */
-    String detect(String imageUrl);
+    String detectByUrl(String imageUrl);
+
+    /**
+     * detect by file
+     *
+     * @param imageFile imageFile
+     */
+    String detectByFile(MultipartFile imageFile);
 }

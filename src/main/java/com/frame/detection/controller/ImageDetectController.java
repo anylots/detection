@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -49,15 +50,15 @@ public class ImageDetectController {
      * @return
      */
     @RequestMapping(value = "/detectImage", method = RequestMethod.POST)
-    public ModelAndView detectOut(String imageLink) {
+    public ModelAndView detectOut(String imageLink, MultipartFile imageFile) {
 
-        // step 1. detect image by imageUrl
-        String detectFrame = imageDetectService.detect(imageLink);
+        // step 1. detect image
+        String detectOut = imageDetectService.detectByUrl(imageLink);
 
         // step 2. assemble modelAndView
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName(ViewModelConstants.DETECT_OUT);
-        modelAndView.addObject(ViewModelConstants.DETECT_OUT_IMAGE, detectFrame);
+        modelAndView.addObject(ViewModelConstants.DETECT_OUT_IMAGE, detectOut);
 
         // step 3. return detect result page
         return modelAndView;

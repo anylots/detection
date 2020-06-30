@@ -1,5 +1,7 @@
 package com.frame.detection.client;
 
+import org.springframework.util.MultiValueMap;
+
 /**
  * image detect client
  *
@@ -9,10 +11,11 @@ package com.frame.detection.client;
 public interface ImageDetectClient {
 
     /**
-     * get image info
+     * get detect image post
      *
-     * @param imageLink image link
+     * @param paramMap paramMap
      * @return
      */
-    String getImageInfo(String imageLink);
+    String getDetectImagePost(MultiValueMap<String, String> paramMap);
+
 }

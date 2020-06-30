@@ -2,6 +2,10 @@
 A management system of object detection,
 It's actually a simple web application with Spring Boot and Thymeleaf and bootstrap.
 
+Blog in Chinese：
+https://blog.csdn.net/m0_46503651/article/details/106974051
+
+
 ##How to use
 clone it to your local device,run 
 DetectionApplication.class, access this address through a browser: /detectImage,

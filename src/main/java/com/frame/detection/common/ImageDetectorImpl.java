@@ -4,6 +4,8 @@ package com.frame.detection.common;
 import com.frame.detection.client.ImageDetectClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
 /**
  * implement of ImageDetector
@@ -20,15 +22,31 @@ public class ImageDetectorImpl implements ImageDetector {
     @Autowired
     private ImageDetectClient imageDetectClient;
 
+
     /**
-     * detect
+     * get image info by url
      *
-     * @param imageUrl image url
+     * @param imageLink image link
      * @return
      */
     @Override
-    public String detect(String imageUrl) {
-        //get image info
-        return imageDetectClient.getImageInfo(imageUrl);
+    public String getDetectImageByUrl(String imageLink) {
+
+        MultiValueMap<String, String> paramMap = new LinkedMultiValueMap<>();
+        paramMap.add("imageLink", imageLink);
+        return imageDetectClient.getDetectImagePost(paramMap);
+    }
+
+    /**
+     * get image info by code
+     *
+     * @param imageBase64Code imageBase64Code
+     * @return
+     */
+    @Override
+    public String getDetectImageByCode(String imageBase64Code) {
+        MultiValueMap<String, String> paramMap = new LinkedMultiValueMap<>();
+        paramMap.add("imageBase64Code", imageBase64Code);
+        return imageDetectClient.getDetectImagePost(paramMap);
     }
 }
