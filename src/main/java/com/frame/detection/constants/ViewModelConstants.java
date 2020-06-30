@@ -21,6 +21,6 @@ public class ViewModelConstants {
     /**
      * image on detectOut
      */
-    public static final String DETECT_OUT_IMAGE = "detectOutImage";
+    public static final String DETECT_OUT_IMAGE = "img";
 
 }
