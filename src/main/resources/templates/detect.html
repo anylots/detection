@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link th:href="@{bootstrap/css/bootstrap.css}" rel="stylesheet"/>
-    <script th:src="@{bootstrap/js/bootstrap.js}"></script>
+    <script th:src="@{bootstrap/js/jquery.min.js}"></script>
 
+    <script th:src="@{bootstrap/js/bootstrap.js}"></script>
+    <link th:href="@{bootstrap/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{bootstrap/css/bootstrap-grid.css}" rel="stylesheet" />
+    <link th:href="@{bootstrap/css/bootstrap-reboot.css}" rel="stylesheet" />
+    <!--    <script th:src="@{bootstrap/js/bootstrap.js.map}"></script>-->
+    <!--    <script th:src="@{bootstrap/js/bootstrap.bundle.js}"></script>-->
+
+    <script th:src="@{script/detect.js}"></script>
     <title>imageDetect</title>
 </head>
+
 <body>
-<script th:src="@{bootstrap/js/jquery.min.js}"></script>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Navbar w/ text</a>
@@ -32,78 +40,43 @@
             </li>
         </ul>
         <span class="navbar-text">
-      Navbar text with an inline element
-    </span>
+                Navbar text with an inline element
+            </span>
     </div>
 </nav>
 
 
 <div class="container" style="margin-top:20px;">
     <h2>Object Detection Management</h2>
-    <form enctype='multipart/form-data' method='POST' action="detectImage" target="_blank" onsubmit="return toVaild()">
+    <form enctype='multipart/form-data' method='POST' action="detectImage" target="_blank"
+          onsubmit="return toValid()">
 
         <div class="input-group mb-3" style="margin-top:40px;width:500px">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                <span class="input-group-text" id="inputGroupFileAddon">Upload</span>
             </div>
             <div class="custom-file">
-                <input type="file" name="imageFile" class="custom-file-input" id="inputGroupFile01"
-                       aria-describedby="inputGroupFileAddon01">
-                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                <input type="file" name="imageFile" class="custom-file-input" id="inputGroupFile"
+                       aria-describedby="inputGroupFileAddon" onchange="changeImageFile()">
+                <label id="inputFileLabelId" class="custom-file-label" for="inputGroupFile">Choose file</label>
             </div>
         </div>
         <br>
+
 
         <div class="input-group mb-3" style="margin-top:5px;width:500px">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Picture link</span>
             </div>
             <input id="imageLinkId" name="imageLink" type="text" class="form-control" placeholder=""
-                   aria-label="Username"
-                   aria-describedby="basic-addon1" value="">
+                   aria-label="Username" aria-describedby="basic-addon1" onchange="changeImageLink()" value="">
         </div>
         <br>
 
-
-        <!--<i>Please enter parameters:</i>-->
-        <!--<input type="text" class="txt_input" name="name" value="detect" style="margin-top:10px;"/>-->
-        <!--<br>-->
-        <br>
         <input type="submit" value="submit" class="btn btn-primary"
-               style="margin-top:80px;margin-left:400px;width:100px"/>
+               style="margin-top:70px;margin-left:400px;width:100px" />
     </form>
 </div>
 </body>
-<script language="javascript">
-            function toVaild(){
-                var val = document.getElementById("imageLinkId").value;
-                if(isEmpty(val)){
-                   alert("Picture link is empty");
-                   return false;
-                }else{
-                 return true;
-                }
-            }
 
-
-function isEmpty(str) {
-    if(typeof str== null || str== "" || str== "undefined") {
-        return true;
-    } else {
-    if (str.match(/^[ ]*$/))
-     {
-             return true;
-      }
-        return false;
-    }
-}
-　　
-
-
-
-
-
-
-
-</script>
 </html>

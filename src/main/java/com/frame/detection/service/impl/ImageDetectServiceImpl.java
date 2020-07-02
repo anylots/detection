@@ -54,7 +54,7 @@ public class ImageDetectServiceImpl implements ImageDetectService {
 
         try {
             BASE64Encoder base64Encoder = new BASE64Encoder();
-            String base64EncoderImg = imageFile.getOriginalFilename() + "," + base64Encoder.encode(imageFile.getBytes());
+            String base64EncoderImg = base64Encoder.encode(imageFile.getBytes());
             return imageDetector.getDetectImageByCode(base64EncoderImg);
 
         } catch (IOException e) {
