@@ -39,6 +39,7 @@ public class ImageDetectServiceImpl implements ImageDetectService {
      */
     @Override
     public String detectByUrl(String imageUrl) {
+
         //detect image
         String detectResult = imageDetector.getDetectImageByUrl(imageUrl);
         return detectResult;
@@ -62,4 +63,5 @@ public class ImageDetectServiceImpl implements ImageDetectService {
         }
         return null;
     }
+
 }

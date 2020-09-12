@@ -24,4 +24,5 @@ public interface ImageDetectService {
      * @param imageFile imageFile
      */
     String detectByFile(MultipartFile imageFile);
+
 }

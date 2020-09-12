@@ -2,6 +2,7 @@
 package com.frame.detection.controller;
 
 import com.frame.detection.constants.ViewModelConstants;
+import com.frame.detection.service.ImageConsultService;
 import com.frame.detection.service.ImageDetectService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +35,12 @@ public class ImageDetectController {
     private ImageDetectService imageDetectService;
 
     /**
+     * service of imageConsult
+     */
+    @Autowired
+    private ImageConsultService imageConsultService;
+
+    /**
      * detect out
      *
      * @return
@@ -56,6 +63,28 @@ public class ImageDetectController {
         // step 1. detect image
         String detectOut = StringUtils.isEmpty(imageFile.getOriginalFilename()) ? imageDetectService.detectByUrl(imageLink)
                 : imageDetectService.detectByFile(imageFile);
+
+        // step 2. assemble modelAndView
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName(ViewModelConstants.DETECT_OUT);
+        modelAndView.addObject(ViewModelConstants.DETECT_OUT_IMAGE, detectOut);
+
+        // step 3. return detect result page
+        return modelAndView;
+    }
+
+    /**
+     * detect consult
+     *
+     * @param imageLink
+     * @return
+     */
+    @RequestMapping(value = "/detectConsult", method = RequestMethod.POST)
+    public ModelAndView detectConsult(String imageLink) {
+
+        // step 1. detect image
+        String detectOut = imageConsultService.detectInQueue(imageLink);
+
 
         // step 2. assemble modelAndView
         ModelAndView modelAndView = new ModelAndView();
