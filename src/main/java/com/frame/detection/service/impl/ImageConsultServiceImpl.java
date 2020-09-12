@@ -34,6 +34,9 @@ public class ImageConsultServiceImpl implements ImageConsultService {
 
     private static final String CONSULT_OUT = "consultOut";
 
+    private static final String IMAGE_KEY = "imageKey";
+    private static final String IMAGE_URL = "imageUrl";
+
     private static final Set<Long> TIME_INTERVALS = new HashSet<Long>() {
         {
             this.add(200l);
@@ -54,15 +57,18 @@ public class ImageConsultServiceImpl implements ImageConsultService {
         //Put imageUrl in queue
         Map<String, Object> imageInfo = new HashMap<>();
         String imageKey = UUID.randomUUID().toString();
-        imageInfo.put(imageKey, imageKey);
+        imageInfo.put(IMAGE_KEY, imageKey);
+        imageInfo.put(IMAGE_URL, imageUrl);
         redisTemplate.opsForList().leftPush(IMAGE_QUEUE, JSON.toJSONString(imageInfo));
 
         //Get the result
         for (Long interval : TIME_INTERVALS) {
             try {
                 Thread.currentThread().sleep(interval.longValue());
-                Object consultResult = redisTemplate.opsForHash().get(CONSULT_OUT, imageKey);
+                Object consultResult = redisTemplate.opsForHash().get(imageKey, CONSULT_OUT);
                 if (consultResult != null) {
+                    //delete result in cache
+                    redisTemplate.opsForHash().delete(imageKey);
                     return (String) consultResult;
                 }
             } catch (InterruptedException e) {

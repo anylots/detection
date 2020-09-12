@@ -44,7 +44,7 @@ class DetectionApplicationTests {
 
         redisTemplate.opsForHash().putAll("consultOut", consultOut);
 
-        String result = imageConsultService.detectInQueue("testUrl");
+        String result = imageConsultService.detectInQueue("http://i0.hdslb.com/bfs/archive/b95b8f5f84f86eeae701577eab3b8bd2e1c39953.jpg");
         System.out.println("ans: " + result);
     }
 
