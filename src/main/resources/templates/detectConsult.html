@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script th:src="@{bootstrap/js/jquery.min.js}"></script>
+    <script th:src="@{bootstrap/js/bootstrap.js}"></script>
+    <link th:href="@{bootstrap/css/bootstrap.css}" rel="stylesheet" />
+    <script th:src="@{script/detect.js}"></script>
+    <title>imageDetect</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar w/ text</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Detect <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">GAN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">StyleTest</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Configuration</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+                Navbar text with an inline element
+            </span>
+    </div>
+</nav>
+
+
+<div class="container" style="margin-top:20px;">
+    <h2>Object Detection Management</h2>
+    <form enctype='multipart/form-data' method='POST' action="consultImage" target="_blank"
+          onsubmit="return toValid()">
+
+        <div class="input-group mb-3" style="margin-top:5px;width:500px">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Picture link</span>
+            </div>
+            <input id="imageLinkId" name="imageLink" type="text" class="form-control" placeholder=""
+                   aria-label="Username" aria-describedby="basic-addon1" onchange="changeImageLink()" value="">
+        </div>
+        <br>
+
+        <input type="submit" value="submit" class="btn btn-primary"
+               style="margin-top:70px;margin-left:400px;width:100px" />
+    </form>
+</div>
+</body>
+
+</html>

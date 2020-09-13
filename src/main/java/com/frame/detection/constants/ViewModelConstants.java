@@ -14,6 +14,11 @@ public class ViewModelConstants {
     public static final String DETECT = "detect";
 
     /**
+     * detect html
+     */
+    public static final String DETECT_CONSULT = "detectConsult";
+
+    /**
      * detectOut html
      */
     public static final String DETECT_OUT = "detectOut";

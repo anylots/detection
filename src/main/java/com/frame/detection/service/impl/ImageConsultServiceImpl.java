@@ -1,6 +1,7 @@
 package com.frame.detection.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.frame.detection.constants.ServiceConstants;
 import com.frame.detection.service.ImageConsultService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,23 +53,29 @@ public class ImageConsultServiceImpl implements ImageConsultService {
      * @param imageUrl image url
      */
     @Override
-    public String detectInQueue(String imageUrl) {
+    public String detectInQueue(String imageUrl) throws Exception {
 
-        //Put imageUrl in queue
+        //step 1. Is the queue overrun
+        if (redisTemplate.opsForList().size(IMAGE_QUEUE) > ServiceConstants.THREAD_STACK_SIZE) {
+            logger.error("thread stack size is out of limit");
+            throw new Exception("System busy,Please try again later");
+        }
+
+        //step 2. Put imageUrl in queue
         Map<String, Object> imageInfo = new HashMap<>();
         String imageKey = UUID.randomUUID().toString();
         imageInfo.put(IMAGE_KEY, imageKey);
         imageInfo.put(IMAGE_URL, imageUrl);
         redisTemplate.opsForList().leftPush(IMAGE_QUEUE, JSON.toJSONString(imageInfo));
 
-        //Get the result
+        //step 3. Get the result
         for (Long interval : TIME_INTERVALS) {
             try {
                 Thread.currentThread().sleep(interval.longValue());
                 Object consultResult = redisTemplate.opsForHash().get(imageKey, CONSULT_OUT);
                 if (consultResult != null) {
                     //delete result in cache
-                    redisTemplate.opsForHash().delete(imageKey);
+                    redisTemplate.delete(imageKey);
                     return (String) consultResult;
                 }
             } catch (InterruptedException e) {

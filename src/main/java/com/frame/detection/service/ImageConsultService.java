@@ -11,5 +11,5 @@ public interface ImageConsultService {
      *
      * @param imageUrl image url
      */
-    String detectInQueue(String imageUrl);
+    String detectInQueue(String imageUrl) throws Exception;
 }

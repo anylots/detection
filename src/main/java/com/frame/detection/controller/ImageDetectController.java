@@ -51,6 +51,18 @@ public class ImageDetectController {
         return ViewModelConstants.DETECT;
     }
 
+
+    /**
+     * detect out
+     *
+     * @return
+     */
+    @RequestMapping(value = "/detectConsult", method = RequestMethod.GET)
+    public String detectConsult() {
+
+        return ViewModelConstants.DETECT_CONSULT;
+    }
+
     /**
      * detect out
      *
@@ -79,8 +91,8 @@ public class ImageDetectController {
      * @param imageLink
      * @return
      */
-    @RequestMapping(value = "/detectConsult", method = RequestMethod.POST)
-    public ModelAndView detectConsult(String imageLink) {
+    @RequestMapping(value = "/consultImage", method = RequestMethod.POST)
+    public ModelAndView consultImage(String imageLink) throws Exception {
 
         // step 1. detect image
         String detectOut = imageConsultService.detectInQueue(imageLink);
