@@ -13,7 +13,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Navbar w/ text</a>
+    <a class="navbar-brand" href="#">FancyAI</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -41,7 +41,23 @@
 
 
 <div class="container" style="margin-top:20px;">
-    <h2>Object Detection Management</h2>
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">An item</li>
+            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li>
+        </ul>
+        <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+    </div>
+    <h2>Object Detection Mng</h2>
     <form enctype='multipart/form-data' method='POST' action="detectImage" target="_blank"
           onsubmit="return toValid()">
 
@@ -52,7 +68,7 @@
             <div class="custom-file">
                 <input type="file" name="imageFile" class="custom-file-input" id="inputGroupFile"
                        aria-describedby="inputGroupFileAddon" onchange="changeImageFile()">
-                <label id="inputFileLabelId" class="custom-file-label" for="inputGroupFile">Choose file</label>
+                <label id="inputFileLabelId" class="custom-file-label" for="inputGroupFile">Choose image file</label>
             </div>
         </div>
         <br>
@@ -67,7 +83,7 @@
         </div>
         <br>
 
-        <input type="submit" value="submit" class="btn btn-primary"
+        <input type="submit" value="Submit" class="btn btn-primary"
                style="margin-top:70px;margin-left:400px;width:100px" />
     </form>
 </div>

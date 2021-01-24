@@ -11,7 +11,7 @@ public class ViewModelConstants {
     /**
      * detect html
      */
-    public static final String DETECT = "detect";
+    public static final String DETECT = "detectIndex";
 
     /**
      * detect html

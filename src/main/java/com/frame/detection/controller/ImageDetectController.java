@@ -51,18 +51,6 @@ public class ImageDetectController {
         return ViewModelConstants.DETECT;
     }
 
-
-    /**
-     * detect out
-     *
-     * @return
-     */
-    @RequestMapping(value = "/detectConsult", method = RequestMethod.GET)
-    public String detectConsult() {
-
-        return ViewModelConstants.DETECT_CONSULT;
-    }
-
     /**
      * detect out
      *
@@ -85,14 +73,26 @@ public class ImageDetectController {
         return modelAndView;
     }
 
+
     /**
-     * detect consult
+     * detect image whit redis cache
+     *
+     * @return
+     */
+    @RequestMapping(value = "/detectWithCache", method = RequestMethod.GET)
+    public String detectWithCache() {
+
+        return ViewModelConstants.DETECT_CONSULT;
+    }
+
+    /**
+     * detect out with redis cache
      *
      * @param imageLink
      * @return
      */
-    @RequestMapping(value = "/consultImage", method = RequestMethod.POST)
-    public ModelAndView consultImage(String imageLink) throws Exception {
+    @RequestMapping(value = "/detectOutWithCache", method = RequestMethod.POST)
+    public ModelAndView detectOutWithCache(String imageLink) throws Exception {
 
         // step 1. detect image
         String detectOut = imageConsultService.detectInQueue(imageLink);
