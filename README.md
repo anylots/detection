@@ -12,8 +12,10 @@ DetectionApplication.class, and open this address through a browser: localhost:8
 then paste the image URL into the input box,and Submit.
 
 ## Example
+step1. select image to detect
 ![image](https://github.com/anylots/detection/blob/master/image/20200627160723247.png)
 
+step2. recive response
 ![image](https://github.com/anylots/detection/blob/master/image/OIP.jpg)
 
 
