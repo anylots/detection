@@ -26,29 +26,29 @@ class DetectionApplicationTests {
 
     @Test
     public void testRedisObj() {
-        Map<String, Object> properties = new HashMap<>();
-        properties.put("123", "hello");
-        properties.put("abc", "success");
+        // Map<String, Object> properties = new HashMap<>();
+        // properties.put("123", "hello");
+        // properties.put("abc", "success");
 
-        redisTemplate.opsForHash().putAll("hash", properties);
+        // redisTemplate.opsForHash().putAll("hash", properties);
 
-        Map<Object, Object> ans = redisTemplate.opsForHash().entries("hash");
-        System.out.println("ans: " + ans);
+        // Map<Object, Object> ans = redisTemplate.opsForHash().entries("hash");
+        // System.out.println("ans: " + ans);
 
     }
 
     @Test
     public void testImageDetectService() {
-        Map<String, Object> consultOut = new HashMap<>();
-        consultOut.put("testId", "hello");
+        // Map<String, Object> consultOut = new HashMap<>();
+        // consultOut.put("testId", "hello");
 
-        redisTemplate.opsForHash().putAll("consultOut", consultOut);
-        try {
-            String result = imageConsultService.detectInQueue("http://i0.hdslb.com/bfs/archive/b95b8f5f84f86eeae701577eab3b8bd2e1c39953.jpg");
-            System.out.println("ans: " + result);
-        } catch (Exception e) {
+        // redisTemplate.opsForHash().putAll("consultOut", consultOut);
+        // try {
+        //     String result = imageConsultService.detectInQueue("http://i0.hdslb.com/bfs/archive/b95b8f5f84f86eeae701577eab3b8bd2e1c39953.jpg");
+        //     System.out.println("ans: " + result);
+        // } catch (Exception e) {
 
-        }
+        // }
     }
 
 
